@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AiAgentDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
+    <billingMode>ActionBased</billingMode>
+    <citationsEnabled>false</citationsEnabled>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The agent instructions</description>
+        <developerName>AgentScriptInternal_agent_instructions</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Agent Instructions</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Boolean</dataType>
+        <description>Runtime condition evaluation for if statements</description>
+        <developerName>AgentScriptInternal_condition_1</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Runtime Condition 1</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The next topic to be visited</description>
+        <developerName>AgentScriptInternal_next_topic</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Next Topic</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Account Id when exactly one customer matched</description>
+        <developerName>account_id</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Account Id</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Customer name for the retrieved order</description>
+        <developerName>customer_name</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Customer Name</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Account Id whose last order was already retrieved</description>
+        <developerName>looked_up_id</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Looked Up Id</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Number of customers matching the last search</description>
+        <developerName>match_count</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Match Count</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Numbered list of matching customers with their Ids</description>
+        <developerName>match_list</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Match List</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Order date of the most recent order</description>
+        <developerName>order_date</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Order Date</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>True if an order was found, False if the customer has no orders</description>
+        <developerName>order_found</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Order Found</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Summary message from the order lookup</description>
+        <developerName>order_message</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Order Message</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Order number of the most recent order</description>
+        <developerName>order_number</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Order Number</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Status of the most recent order</description>
+        <developerName>order_status</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Order Status</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Total amount of the most recent order</description>
+        <developerName>order_total</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Order Total</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Link to the most recent order record</description>
+        <developerName>order_url</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Order Url</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Summary of the last customer search</description>
+        <developerName>search_message</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Search Message</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <copilotPrimaryLanguage>en_US</copilotPrimaryLanguage>
+    <genAiPlannerName>Order_Lookup_Assistant_v1</genAiPlannerName>
+    <isScriptCompatibleAgent>true</isScriptCompatibleAgent>
+    <knowledgeActionEnabled>false</knowledgeActionEnabled>
+    <knowledgeFallbackEnabled>false</knowledgeFallbackEnabled>
+    <planner>
+        <fullName>Order_Lookup_Assistant_v1</fullName>
+        <agentGraphRef>20Zg80000087K74</agentGraphRef>
+        <description>Read-only employee assistant that finds a customer&apos;s most recent order</description>
+        <localTopicLinks>
+            <genAiPluginName>agent_router</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>off_topic</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>order_lookup</genAiPluginName>
+        </localTopicLinks>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Welcome the employee and route the request</description>
+            <genAiPluginInstructions>
+                <description>You are the Order Lookup Assistant, a read-only internal assistant for service and sales employees. You only help employees find a customer&apos;s most recent order. You can never create, update, cancel or delete any record. Never guess or invent order data - only report what your actions return. Keep answers short and professional.</description>
+                <developerName>instruction0_179g8000002oFkH</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179g8000002oFkH</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localDeveloperName>agent_router</localDeveloperName>
+            <masterLabel>Agent Router</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Politely decline requests that are not order lookups, including any request to create, change, cancel or delete data</description>
+            <genAiPluginInstructions>
+                <description>You are the Order Lookup Assistant, a read-only internal assistant for service and sales employees. You only help employees find a customer&apos;s most recent order. You can never create, update, cancel or delete any record. Never guess or invent order data - only report what your actions return. Keep answers short and professional.</description>
+                <developerName>instruction0_179g8000002oFkJ</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179g8000002oFkJ</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localDeveloperName>off_topic</localDeveloperName>
+            <masterLabel>Off Topic</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Find a customer and return their most recent order (read-only)</description>
+            <genAiPluginInstructions>
+                <description>You are the Order Lookup Assistant, a read-only internal assistant for service and sales employees. You only help employees find a customer&apos;s most recent order. You can never create, update, cancel or delete any record. Never guess or invent order data - only report what your actions return. Keep answers short and professional.</description>
+                <developerName>instruction0_179g8000002oFkI</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179g8000002oFkI</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>get_last_order</functionName>
+            </localActionLinks>
+            <localActionLinks>
+                <functionName>find_customer</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Search customer accounts by customer name, account number or contact email</description>
+                <invocationTarget>OrderAgent_FindCustomer</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>find_customer</localDeveloperName>
+                <masterLabel>Find Customer</masterLabel>
+            </localActions>
+            <localActions>
+                <description>Get the most recent order for a customer account Id</description>
+                <invocationTarget>OrderAgent_GetLastOrder</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>get_last_order</localDeveloperName>
+                <masterLabel>Get Last Order</masterLabel>
+            </localActions>
+            <localDeveloperName>order_lookup</localDeveloperName>
+            <masterLabel>Order Lookup</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <masterLabel>Order Lookup Assistant</masterLabel>
+        <plannerType>Atlas__ConcurrentMultiAgentOrchestration</plannerType>
+    </planner>
+    <smallTalkEnabled>false</smallTalkEnabled>
+    <staticPromptsEnabled>false</staticPromptsEnabled>
+    <status>Inactive</status>
+    <stopRecPrompts>false</stopRecPrompts>
+    <surfacesEnabled>false</surfacesEnabled>
+    <toneType>Casual</toneType>
+    <version>1</version>
+    <welcomeMessage>Hi! I&apos;m the Order Lookup Assistant. Tell me a customer name, account number or contact email and I&apos;ll find their most recent order.</welcomeMessage>
+</AiAgentDefinitionVersion>
