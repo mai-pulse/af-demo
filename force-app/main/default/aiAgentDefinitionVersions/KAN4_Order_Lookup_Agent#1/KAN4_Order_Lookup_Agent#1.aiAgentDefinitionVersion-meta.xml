@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AiAgentDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
+    <billingMode>ActionBased</billingMode>
+    <citationsEnabled>false</citationsEnabled>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The agent instructions</description>
+        <developerName>AgentScriptInternal_agent_instructions</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Agent Instructions</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Boolean</dataType>
+        <description>Runtime condition evaluation for if statements</description>
+        <developerName>AgentScriptInternal_condition_1</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Runtime Condition 1</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The next topic to be visited</description>
+        <developerName>AgentScriptInternal_next_topic</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Next Topic</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Candidate accounts when more than one customer matched</description>
+        <developerName>candidate_list</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Candidate List</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Answer text from the last order lookup</description>
+        <developerName>lookup_message</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Lookup Message</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Status from the last order lookup</description>
+        <developerName>lookup_status</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Lookup Status</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <copilotPrimaryLanguage>en_US</copilotPrimaryLanguage>
+    <genAiPlannerName>KAN4_Order_Lookup_Agent_v1</genAiPlannerName>
+    <isScriptCompatibleAgent>true</isScriptCompatibleAgent>
+    <knowledgeActionEnabled>false</knowledgeActionEnabled>
+    <knowledgeFallbackEnabled>false</knowledgeFallbackEnabled>
+    <planner>
+        <fullName>KAN4_Order_Lookup_Agent_v1</fullName>
+        <agentGraphRef>20Zg80000088na1</agentGraphRef>
+        <description>Internal employee assistant that answers read-only questions about a customer&apos;s most recent order</description>
+        <localTopicLinks>
+            <genAiPluginName>agent_router</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>off_topic</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>order_lookup</genAiPluginName>
+        </localTopicLinks>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Route order questions to order lookup and everything else to off topic</description>
+            <genAiPluginInstructions>
+                <description>You are an internal order lookup assistant for service and sales employees. You only answer questions about customer orders, using the order lookup action. Never invent or guess order data. You can only read data: you cannot create, update, cancel or delete any records. Be concise and professional.</description>
+                <developerName>instruction0_179g8000002oZeB</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179g8000002oZeB</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localDeveloperName>agent_router</localDeveloperName>
+            <masterLabel>Agent Router</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Politely decline requests that are not read-only questions about customer orders</description>
+            <genAiPluginInstructions>
+                <description>You are an internal order lookup assistant for service and sales employees. You only answer questions about customer orders, using the order lookup action. Never invent or guess order data. You can only read data: you cannot create, update, cancel or delete any records. Be concise and professional.</description>
+                <developerName>instruction0_179g8000002oZeA</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179g8000002oZeA</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localDeveloperName>off_topic</localDeveloperName>
+            <masterLabel>Off Topic</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Find the most recent order for a customer by name, account number or email</description>
+            <genAiPluginInstructions>
+                <description>You are an internal order lookup assistant for service and sales employees. You only answer questions about customer orders, using the order lookup action. Never invent or guess order data. You can only read data: you cannot create, update, cancel or delete any records. Be concise and professional.</description>
+                <developerName>instruction0_179g8000002oZe9</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_179g8000002oZe9</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>lookup_latest_order</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Looks up the customer by name, account number or email and returns their most recent order</description>
+                <invocationTarget>KAN4_OrderLookupService</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+                <localDeveloperName>lookup_latest_order</localDeveloperName>
+                <masterLabel>Lookup Latest Order</masterLabel>
+            </localActions>
+            <localDeveloperName>order_lookup</localDeveloperName>
+            <masterLabel>Order Lookup</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <masterLabel>Order Lookup Assistant</masterLabel>
+        <plannerType>Atlas__ConcurrentMultiAgentOrchestration</plannerType>
+    </planner>
+    <smallTalkEnabled>false</smallTalkEnabled>
+    <staticPromptsEnabled>false</staticPromptsEnabled>
+    <status>Inactive</status>
+    <stopRecPrompts>false</stopRecPrompts>
+    <surfacesEnabled>false</surfacesEnabled>
+    <toneType>Casual</toneType>
+    <version>1</version>
+    <welcomeMessage>Hi! I can look up a customer&apos;s most recent order. Just ask, for example: &apos;What was the last order placed by Acme?&apos;</welcomeMessage>
+</AiAgentDefinitionVersion>
